@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\KurikulumController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\prodiController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +27,10 @@ Route::get('/profile', function () {
 });
 
 //membuat route ke halaman mahasiswa
-Route::get('/mahasiswa/{nama}', function ($nama){
-    echo "<h2>Halo semua</h2>";
-    echo "Nama saya $nama";
-});
+// Route::get('/mahasiswa/{nama}', function ($nama){
+//     echo "<h2>Halo semua</h2>";
+//     echo "Nama saya $nama";
+// });
 
 // //Parameter opsional/tidak wajib diisi ditandai dengan ? di belakang nama parameter, lalu di dalam function diberi default parameter
 // Route::get('/mahasiswa/{nama?}', function ($nama = 'christy'){
@@ -38,10 +39,10 @@ Route::get('/mahasiswa/{nama}', function ($nama){
 // });
 
 //klo ada lebih dari 1 parameter
-Route::get('/mahasiswa/{nama?}/{pekerjaan?}', function ($nama = 'christy', $pekerjaan = 'mahasiswa'){
-    echo "<h2>Halo semua</h2>";
-    echo "Nama saya $nama, sebagai $pekerjaan";
-});
+// Route::get('/mahasiswa/{nama?}/{pekerjaan?}', function ($nama = 'christy', $pekerjaan = 'mahasiswa'){
+//     echo "<h2>Halo semua</h2>";
+//     echo "Nama saya $nama, sebagai $pekerjaan";
+// });
 
 //melakukan redirect antar route
 Route::get('/hubungi', function(){
@@ -96,3 +97,7 @@ Route::apiResource('/dosen', DosenController::class);
 //http://localhost:8000/kurikulum/1000/edit
 
 
+Route::get('/mahasiswa/insert-elq', [MahasiswaController::class, 'insertElq']);
+Route::get('/mahasiswa/update-elq', [MahasiswaController::class, 'updateElq']);
+Route::get('/mahasiswa/delete-elq', [MahasiswaController::class, 'deleteElq']);
+Route::get('/mahasiswa/select-elq', [MahasiswaController::class, 'selectElq']);
