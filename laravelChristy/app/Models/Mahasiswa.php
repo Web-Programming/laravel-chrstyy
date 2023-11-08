@@ -18,4 +18,8 @@ class Mahasiswa extends Model
 
     //mengatur yg tidak perlu diisi
     protected $guarded = [];
+
+    public function prodi(){
+        return $this->belongsTo('App\Models\Prodi');
+    }
 }
