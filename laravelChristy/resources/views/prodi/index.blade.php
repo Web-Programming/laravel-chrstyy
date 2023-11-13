@@ -12,25 +12,26 @@
                 <div class="alert alert-success">
                     {{ session()->get('info') }}
                 </div>
-                <table class="table table-striped table-hover">
-                    <thead>
+            @endif
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <td>Nama</td>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($prodis as $item)
                         <tr>
-                            <td>Nama</td>
-                            <th>Aksi</th>
+                            <td>
+                                {{ $item->nama }}
+                            </td>
+                            <td><a href="{{ url('prodi/' . $item->id) }}" class="btn btn-warning">Detail</a></td>
+                            <td><a href="{{ url('prodi/' . $item->id . '/edit') }}" class="btn btn-info">Ubah</a></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($prodi as $item)
-                            <tr>
-                                <td>
-                                    {{ $item->nama }}
-                                </td>
-                                <td><a href="{{ url('prodi/' . $item->id) }}" class="btn btn-warning">Detail</a></td>
-                                <td><a href="{{ url('prodi/' . $item->id . '/edit') }}" class="btn btn-info">Ubah</a></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
