@@ -23,11 +23,18 @@
                 <tbody>
                     @foreach ($prodis as $item)
                         <tr>
+                            <td> {{ $item->nama }}</td>
                             <td>
-                                {{ $item->nama }}
+
+                                <form action="{{ route('prodi.destroy', ['prodi' => $item->id]) }}" method="post">
+                                    <a href="{{ url('prodi/' . $item->id) }}" class="btn btn-warning">Detail</a>
+                                    <a href="{{ url('prodi/' . $item->id . '/edit') }}" class="btn btn-info">Ubah</a>
+
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
                             </td>
-                            <td><a href="{{ url('prodi/' . $item->id) }}" class="btn btn-warning">Detail</a></td>
-                            <td><a href="{{ url('prodi/' . $item->id . '/edit') }}" class="btn btn-info">Ubah</a></td>
                         </tr>
                     @endforeach
                 </tbody>
